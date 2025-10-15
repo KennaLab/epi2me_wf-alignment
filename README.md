@@ -1,4 +1,4 @@
-# Alignment workflow
+# Alignment
 
 Align nanopore sequencing data and visualize mapping statistics.
 
