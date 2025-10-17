@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.2.5]
+This patch release of `wf-alignment` updates internal workflow naming, and does not affect any workflow outputs.
+### Changed
+- Removed the workflow suffix from the workflow title.
+
 ## [v1.2.4]
 This patch release of wf-alignment fixes the "aux_parse: unrecognised type" error observed by some users. This release also updates wf-alignment to our latest workflow standard, but these changes will have no impact to the workflow.
 
