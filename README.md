@@ -136,6 +136,27 @@ input_reads.fastq   ─── input_directory  ─── input_directory
 
 
 
+## Pipeline overview
+
+### 1. Combine reference files
+
+All reference files in the directory passed to `--references` are concatenated.
+
+### 2. Align reads
+
+Input reads are aligned against the combined reference with [Minimap2](https://github.com/lh3/minimap2). If BAM files are used as input (with `--bam`), only reads in files without a reference in the SAM header are aligned. For other BAM files this step is skipped.
+
+### 3. Create alignment stats
+
+[Bamstats](https://github.com/epi2me-labs/fastcat#bamstats) is used to create per-read and per-reference alignment stats from the BAM files.
+
+### 4. Calculate depth of coverage
+
+Depth of coverage along the reference sequences is determined with [Mosdepth](https://github.com/brentp/mosdepth) (using 200 windows per reference sequence). To speed up the workflow, this step can be skipped by adding `--depth-coverage false`.
+
+
+
+
 ## Input parameters
 
 ### Input Options
@@ -213,27 +234,6 @@ Output files may be aggregated including information for all samples or provided
 
 
 
-## Pipeline overview
-
-### 1. Combine reference files
-
-All reference files in the directory passed to `--references` are concatenated.
-
-### 2. Align reads
-
-Input reads are aligned against the combined reference with [Minimap2](https://github.com/lh3/minimap2). If BAM files are used as input (with `--bam`), only reads in files without a reference in the SAM header are aligned. For other BAM files this step is skipped.
-
-### 3. Create alignment stats
-
-[Bamstats](https://github.com/epi2me-labs/fastcat#bamstats) is used to create per-read and per-reference alignment stats from the BAM files.
-
-### 4. Calculate depth of coverage
-
-Depth of coverage along the reference sequences is determined with [Mosdepth](https://github.com/brentp/mosdepth) (using 200 windows per reference sequence). To speed up the workflow, this step can be skipped by adding `--depth-coverage false`.
-
-
-
-
 ## Troubleshooting
 
 + If the workflow fails please run it with the demo data set to ensure the workflow itself is working. This will help us determine if the issue is related to the environment, input parameters or a bug.
@@ -242,7 +242,7 @@ Depth of coverage along the reference sequences is determined with [Mosdepth](ht
 
 
 
-## FAQ's
+## FAQs
 
 *I cannot select a single reference file in the EPI2ME desktop app.* - When running the workflow via the desktop app, you need to provide a directory with reference files. If you only have a single file, you can create a directory to place your reference file inside and select this with the reference input option.
 

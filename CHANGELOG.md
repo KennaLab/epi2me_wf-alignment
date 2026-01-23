@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [unreleased]
+### Changed
+- Updated to wf-template v5.7.0 to maintain compliance with our latest wf-template standard, changing:
+    - Pipeline overview now appears before pipeline parameters in README.
+    - ezCharts plotting library has been updated to 0.15.1, there are no user facing changes to plots.
+    - Fastcat FASTQ pre-processing program has been updated to 0.24.2, it is more robust to malformed FASTQ input.
+- CHANGELOG to be compliant with our formatting rules.
+
 ## [v1.2.5]
 This patch release of `wf-alignment` updates internal workflow naming, and does not affect any workflow outputs.
 ### Changed
@@ -239,7 +247,7 @@ This patch release of wf-alignment fixes the "aux_parse: unrecognised type" erro
 ### Added
 - Input params and handling for bam and ubam formats
 
-### Updated
+### Changed
 - Bumped base container to v0.2.0
 
 ## [v0.1.8]
@@ -283,18 +291,18 @@ This patch release of wf-alignment fixes the "aux_parse: unrecognised type" erro
 - Cumulative coverage plot
 
 ## [v0.1.1]
-### Changed.
+### Changed
 - reference can be either a directory or single file.
 - output one merged CSV vs one for each barcode.
 - speed up a few steps including mosdepth and report creation.
 
 ## [v0.1.0]
-### Fixed.
+### Fixed
 - run_id in mapula output json.
 - Only accept certain format files as references.
 - reduce storage required for workspace.
 
-### Added.
+### Added
 - Handling for no alignments.
 - Integration with EPI2ME Labs notebook environment.
 
@@ -349,7 +357,7 @@ This patch release of wf-alignment fixes the "aux_parse: unrecognised type" erro
 - Make docker executor default.
 
 ## [v0.0.1]
-* Initial release
+Initial release.
 
 ### Added
 - Basic running of alignment workflow and reporting
