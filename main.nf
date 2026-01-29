@@ -192,12 +192,13 @@ process getVersionsCommon {
     cpus 1
     memory "2 GB"
     input:
-        path "versions.txt"
+        path "versions_wf.txt"
     output:
         path "versions.txt"
     script:
     """
-    ezcharts --version | sed 's/ /,/' >> versions.txt
+    ezcharts --version | sed 's/ /,/' > versions_common.txt
+    cat versions_wf.txt versions_common.txt > versions.txt
     """
 }
 
