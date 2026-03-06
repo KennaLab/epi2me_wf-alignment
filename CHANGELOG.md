@@ -6,10 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 ### Changed
-- Updated to wf-template v5.7.0 to maintain compliance with our latest wf-template standard, changing:
-    - Pipeline overview now appears before pipeline parameters in README.
+- Updated to wf-template v5.7.1 to maintain compliance with our latest wf-template standard, changing:
     - ezCharts plotting library has been updated to 0.15.1, there are no user facing changes to plots.
     - Fastcat FASTQ pre-processing program has been updated to 0.24.2, it is more robust to malformed FASTQ input.
+    - The README docs sections to move pipeline overview before input parameters and related protocols after outputs.
+    - Links in the README to point at our new documentation website.
+    - Our pre-commit configuration to resolve a dependency issue in our test infrastructure.
 - CHANGELOG to be compliant with our formatting rules.
 
 ## [v1.2.5]
