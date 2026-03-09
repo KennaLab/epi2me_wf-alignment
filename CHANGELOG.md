@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [v1.2.6]
+This patch release of wf-alignment updates the workflow documentation to match our latest standard. There is no impact to the outputs of the workflow.
 ### Changed
 - Updated to wf-template v5.7.1 to maintain compliance with our latest wf-template standard, changing:
     - ezCharts plotting library has been updated to 0.15.1, there are no user facing changes to plots.
