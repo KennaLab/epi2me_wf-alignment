@@ -48,7 +48,7 @@ ARM processor support: True
 
 These are instructions to install and run the workflow on command line.
 You can also access the workflow via the
-[EPI2ME Desktop application](https://labs.epi2me.io/downloads/).
+[EPI2ME Desktop application](https://epi2me.nanoporetech.com/downloads/).
 
 The workflow uses [Nextflow](https://www.nextflow.io/) to manage
 compute and software resources,
@@ -68,7 +68,8 @@ parameter as exemplified below.
 It is not required to clone or download the git repository
 in order to run the workflow.
 More information on running EPI2ME workflows can
-be found on our [website](https://labs.epi2me.io/wfindex).
+be found in the
+[documentation](https://epi2me.nanoporetech.com/epi2me-docs/wfquickstart/).
 
 The following command can be used to obtain the workflow.
 This will pull the repository in to the assets folder of
@@ -98,18 +99,6 @@ nextflow run epi2me-labs/wf-alignment \
 	-profile standard
 ```
 
-For further information about running a workflow on
-the command line see https://labs.epi2me.io/wfquickstart/
-
-
-
-
-## Related protocols
-
-This workflow is designed to take input sequences that have been produced from [Oxford Nanopore Technologies](https://nanoporetech.com/) devices.
-
-Find related protocols in the [Nanopore community](https://community.nanoporetech.com/docs/).
-
 
 
 
@@ -133,6 +122,27 @@ input_reads.fastq   ─── input_directory  ─── input_directory
                                              └── barcode03
                                               └── reads0.fastq
 ```
+
+
+
+## Pipeline overview
+
+### 1. Combine reference files
+
+All reference files in the directory passed to `--references` are concatenated.
+
+### 2. Align reads
+
+Input reads are aligned against the combined reference with [Minimap2](https://github.com/lh3/minimap2). If BAM files are used as input (with `--bam`), only reads in files without a reference in the SAM header are aligned. For other BAM files this step is skipped.
+
+### 3. Create alignment stats
+
+[Bamstats](https://github.com/epi2me-labs/fastcat#bamstats) is used to create per-read and per-reference alignment stats from the BAM files.
+
+### 4. Calculate depth of coverage
+
+Depth of coverage along the reference sequences is determined with [Mosdepth](https://github.com/brentp/mosdepth) (using 200 windows per reference sequence). To speed up the workflow, this step can be skipped by adding `--depth-coverage false`.
+
 
 
 
@@ -213,23 +223,11 @@ Output files may be aggregated including information for all samples or provided
 
 
 
-## Pipeline overview
+## Related protocols
 
-### 1. Combine reference files
+This workflow is designed to take input sequences that have been produced from [Oxford Nanopore Technologies](https://nanoporetech.com/) devices.
 
-All reference files in the directory passed to `--references` are concatenated.
-
-### 2. Align reads
-
-Input reads are aligned against the combined reference with [Minimap2](https://github.com/lh3/minimap2). If BAM files are used as input (with `--bam`), only reads in files without a reference in the SAM header are aligned. For other BAM files this step is skipped.
-
-### 3. Create alignment stats
-
-[Bamstats](https://github.com/epi2me-labs/fastcat#bamstats) is used to create per-read and per-reference alignment stats from the BAM files.
-
-### 4. Calculate depth of coverage
-
-Depth of coverage along the reference sequences is determined with [Mosdepth](https://github.com/brentp/mosdepth) (using 200 windows per reference sequence). To speed up the workflow, this step can be skipped by adding `--depth-coverage false`.
+Find related protocols in the [Nanopore community](https://community.nanoporetech.com/docs/).
 
 
 
@@ -242,7 +240,7 @@ Depth of coverage along the reference sequences is determined with [Mosdepth](ht
 
 
 
-## FAQ's
+## FAQs
 
 *I cannot select a single reference file in the EPI2ME desktop app.* - When running the workflow via the desktop app, you need to provide a directory with reference files. If you only have a single file, you can create a directory to place your reference file inside and select this with the reference input option.
 
